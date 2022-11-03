@@ -47,7 +47,7 @@ class NewVisitorTest(unittest.TestCase):
         time.sleep(1)
 
         table = self.browser.find_element(By.ID, 'id_list_table')
-        rows = table.find_elements('tr')
+        rows = table.find_elements(By.TAG_NAME, 'tr')
         self.assertTrue(
             any(row.text == '1: Купить павлиньи перья' for row in rows)
         )
