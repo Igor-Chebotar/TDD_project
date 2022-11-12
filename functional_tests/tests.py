@@ -1,11 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from django.test import LiveServerTestCase
 import time
 import unittest
 
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
     # тест нового посетителя
 
     def setUp(self):
@@ -26,7 +27,7 @@ class NewVisitorTest(unittest.TestCase):
         # Эдит слышала про крутое новое онлайн-приложение со
         # списком неотложных дел. Она решает оценить его
         # домашнюю страницу
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
 
         # Она видит, что заголовок и шапка страницы говорят о
         # списках неотложных дел
@@ -66,7 +67,3 @@ class NewVisitorTest(unittest.TestCase):
         self.check_for_row_in_list_table('2: Сделать мушку из павлиньих перьев')
 
         self.fail('Закончить тест!')
-
-
-if __name__ == "__main__":
-    unittest.main(warnings="ignore")
