@@ -1,14 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 import time
 from selenium.common.exceptions import WebDriverException
 
 MAX_WAIT = 10
 
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
     # тест нового посетителя
 
     def setUp(self):
@@ -119,7 +119,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertNotIn('Купить павлиньи перья', page_text)
         self.assertIn('Купить молоко', page_text)
 
-    def test_layout_and_stylong(self):
+    def test_layout_and_styling(self):
         '''тест макета и стилевого оформления'''
         # Эдит открывает домашнюю страницу
         self.browser.get(self.live_server_url)
